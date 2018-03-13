@@ -12,7 +12,8 @@
     $picture_path = $_SESSION['join']['picture_path'];
     //sql文
     $sql = 'INSERT INTO `members` SET `nick_name`=?, `email`=?,`password`=?, `picture_path`=?';
-    $data = array($nick_name, $email, sha1($password), $picture_path);
+    $data = array($nick_name, $email, ($password), $picture_path);
+  //cha1 = （）内の値を16進数にし、暗号化する関数
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
     // unset=()で指定した変数を削除する。
